@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace GuroDemo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Inserisci nome cliente:");
+            string name = Console.ReadLine();
+            Console.WriteLine("Inserisci email:");
+            string email = Console.ReadLine();
+            Console.WriteLine("Tipo cliente (Privato, Azienda, VIP):");
+            string tipo = Console.ReadLine();
+
+            var customer = new Customer(name, email, tipo);
+
+            var order = new Order(customer);
+
+            var products = new List<Product>
+            {
+                new Product("Mouse", 25.99),
+                new Product("Keyboard", 45.50),
+                new Product("Monitor", 150.00),
+            };
+
+            var selector = new ProductSelector(products);
+            var sender = new OrderSender();
+
+            bool continua = true;
+            while (continua)
+            {
+                selector.ShowAvailableProducts();
+                Product p = selector.GetProduct();
+                int q = selector.GetProductQuantity(p);
+                order.AddItem(p, q);
+
+                double total = 0;
+                foreach (var item in order.Items)
+                {
+                    total += item.Product.Price * item.Quantity;
+                }
+
+                if (tipo == "VIP")
+                {
+                    total *= 0.8;
+                    Console.WriteLine("20% di sconto VIP applicato.");
+                }
+                else if (tipo == "Azienda")
+                {
+                    total *= 0.9;
+                    Console.WriteLine("10% di sconto aziendale applicato.");
+                    total += 10;
+                    Console.WriteLine("Spedizione: 10€");
+                }
+                else
+                {
+                    total += 5;
+                    Console.WriteLine("Spedizione: 5€");
+                }
+
+                Console.WriteLine($"Totale ordine: {total:F2} EUR");
+
+                sender.Send(order);
+                continua = sender.continueShopping();
+            }
+
+            Console.WriteLine("Arrivederci");
+        }
+    }
+}

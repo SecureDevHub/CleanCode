@@ -1,0 +1,52 @@
+﻿using GuroDemo;
+using System;
+using System.Collections.Generic;
+
+namespace OrderAppDynamic
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var customer = new Customer("Mario Rossi", "mario@example.com");
+            var products = new List<Product>
+            {
+                new Product("Mouse", 25.99),
+                new Product("Keyboard", 45.50),
+                new Product("Monitor", 150.00),
+            };
+
+            var order = new Order(customer);
+
+            Console.WriteLine("Available products:");
+            for (int i = 0; i < products.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {products[i].Name} - {products[i].Price} EUR");
+            }
+
+            Console.WriteLine("How many different products do you want to order?");
+            int productCount = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < productCount; i++)
+            {
+                Console.WriteLine("Enter product number:");
+                int productIndex = int.Parse(Console.ReadLine()) - 1;
+                Product selectedProduct = products[productIndex];
+
+                Console.WriteLine($"Enter quantity for {selectedProduct.Name}:");
+                int quantity = int.Parse(Console.ReadLine());
+
+                order.AddItem(selectedProduct, quantity);
+            }
+
+            var printer = new OrderPrinter(order);
+            printer.Print();
+
+            Console.WriteLine("Sending order...");
+            System.Threading.Thread.Sleep(1000);
+            Console.WriteLine("Order sent!");
+        }
+    }
+
+ Classi Customer, Product, OrderItem, Order, OrderPrinter come prima
+}
