@@ -1,0 +1,81 @@
+name: Default CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # Job 1: Controllo di sicurezza del codice
+  security-check:
+    name: Security Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Esegui controlli di sicurezza con GitHub CodeQL
+      - name: Set up CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: 'javascript,python,java,go,csharp' # Aggiungi o rimuovi linguaggi in base al progetto
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+
+      # Esegui controlli di sicurezza con Trivy (per vulnerabilità nei file e nei container)
+      - name: Run Trivy Security Scan
+        uses: aquasecurity/trivy-action@v0.11.0
+        with:
+          scan-type: 'fs'
+          severity: 'HIGH,CRITICAL'
+
+  # Job 2: Controllo di pulizia del codice
+  code-cleanliness:
+    name: Code Cleanliness Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Esegui controlli di linting (universale con Super-Linter)
+      - name: Run Super-Linter
+        uses: github/super-linter@v5
+        env:
+          VALIDATE_ALL_CODEBASE: true
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Job 3: Controlli utili di base
+  basic-checks:
+    name: Basic Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Controllo di formattazione (esempio con Prettier per progetti web)
+      - name: Check Code Formatting
+        run: |
+          if [ -f "package.json" ]; then
+            npm install --save-dev prettier
+            npx prettier --check "**/*.{js,jsx,ts,tsx,json,css,md}"
+          else
+            echo "No package.json found, skipping formatting check."
+          fi
+
+      # Controllo di dipendenze obsolete
+      - name: Check for Outdated Dependencies
+        run: |
+          if [ -f "package.json" ]; then
+            npm install -g npm-check-updates
+            ncu
+          elif [ -f "requirements.txt" ]; then
+            pip install pip-review
+            pip-review --local
+          else
+            echo "No dependency file found, skipping dependency check."
+          fi
