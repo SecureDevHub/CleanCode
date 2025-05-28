@@ -8,10 +8,12 @@ namespace GuroDemo
     {
         static void Main(string[] args)
         {
-            
-            CustomerManager manager = new CustomerManager();
-            Customer customer = manager.GetCustomer();
 
+            Customer customer = new CustomerBuilder()
+                                .WithNameFromConsole()
+                                .WithEmailFromConsole()
+                                .WithTypeFromConsole()
+                                .Build();
 
             var order = new Order(customer);
 

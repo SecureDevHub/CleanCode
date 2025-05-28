@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="AziendaPriceStrategy.cs" />
     <Compile Include="Customer.cs" />
-    <Compile Include="CustomerManager.cs" />
+    <Compile Include="CustomerBuilder.cs" />
     <Compile Include="IPriceStrategy.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderItem.cs" />
