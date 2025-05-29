@@ -21,7 +21,11 @@ namespace GuroDemo
             };
 
             ProductSelector selector = new ProductSelector(products);
-            OrderSender sender = new OrderSender();
+            OrderSender sender = OrderSender.GetInstance();
+
+            sender.RegisterObserver(new OrderPrinter(order));
+            sender.RegisterObserver(new EmailNotifier());
+
 
             bool continua = true;
             while (continua)
@@ -34,13 +38,14 @@ namespace GuroDemo
                 double total = order.Items.Sum(item => item.Product.Price * item.Quantity);
                 var strategy = PriceCalculator.GetStrategy(customer.TypeCustomer);
                 double finalTotal = strategy.Calculate(total);
-                Console.WriteLine($"Totale ordine: {finalTotal:F2} EUR");
 
                 sender.Send(order);
+                Console.WriteLine($"Totale ordine: {finalTotal:F2} EUR");
+
                 continua = sender.continueShopping();
             }
 
-            Console.WriteLine("Arrivederci");
+            Console.WriteLine("Arrivederci " + customer.Name);
         }
     }
 }
