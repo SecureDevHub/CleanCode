@@ -47,6 +47,9 @@
     <Compile Include="AziendaPriceStrategy.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="CustomerBuilder.cs" />
+    <Compile Include="EmailNotifier.cs" />
+    <Compile Include="ICustomerFactory.cs" />
+    <Compile Include="IOrderObserver.cs" />
     <Compile Include="IPriceStrategy.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderItem.cs" />

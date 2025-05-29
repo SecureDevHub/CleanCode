@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GuroDemo
 {
-    internal class OrderPrinter
+    internal class OrderPrinter : IOrderObserver
     {
         private readonly Order _order;
 
@@ -16,19 +16,16 @@ namespace GuroDemo
             _order = order;
         }
 
-        public void Print()
+        public void Update(Order order)
         {
             Console.WriteLine("Dettagli ordine:");
-            Console.WriteLine($"Cliente: {_order.Customer.Name} ({_order.Customer.Email})");
-            Console.WriteLine($"Data: {_order.CreatedAt:dd/MM/yyyy HH:mm}");
-
+            Console.WriteLine($"         Cliente: {_order.Customer.Name} ({_order.Customer.Email})");
+            Console.WriteLine($"         Data: {_order.CreatedAt:dd/MM/yyyy HH:mm}");
             foreach (var item in _order.Items)
             {
-                string line = $"- {item.Product.Name} x{item.Quantity} = {item.GetSubtotal().ToString("C2", CultureInfo.CurrentCulture)}";
+                string line = $"         - {item.Product.Name} x{item.Quantity} = {item.GetSubtotal().ToString("C2", CultureInfo.CurrentCulture)}";
                 Console.WriteLine(line);
             }
-
-            Console.WriteLine("Totale ordine: " + _order.GetTotal().ToString("C2", CultureInfo.CurrentCulture));
         }
     }
 }

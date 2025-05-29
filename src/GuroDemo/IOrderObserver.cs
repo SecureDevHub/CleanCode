@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace GuroDemo
 {
-    internal enum TypeCustomerEnum
+    internal interface IOrderObserver
     {
-        Privato,
-        Vip,
-        Azienda
+        void Update(Order order);
     }
 }

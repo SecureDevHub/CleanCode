@@ -56,7 +56,7 @@ namespace GuroDemo
                         _typeCustomer = TypeCustomerEnum.Azienda;
                         break;
                     default:
-                        _typeCustomer = TypeCustomerEnum.Private;
+                        _typeCustomer = TypeCustomerEnum.Privato;
                         break;
                 }
 
