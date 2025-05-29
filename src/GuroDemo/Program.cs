@@ -8,12 +8,8 @@ namespace GuroDemo
     {
         static void Main(string[] args)
         {
-
-            Customer customer = new CustomerBuilder()
-                                .WithNameFromConsole()
-                                .WithEmailFromConsole()
-                                .WithTypeFromConsole()
-                                .Build();
+            ICustomerFactory factory = new VipCustomerFactory();
+            Customer customer = factory.CreateCustomer("Marco", "marco@example.com");
 
             var order = new Order(customer);
 
