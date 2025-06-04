@@ -19,7 +19,7 @@ namespace GuroDemo
 
         public double GetSubtotal()
         {
-            return Product.Price * Quantity;
+            return Product.GetPrice() * Quantity;
         }
     }
 }

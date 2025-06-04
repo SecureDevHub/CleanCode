@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GuroDemo.Decoration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,17 +9,17 @@ namespace GuroDemo
     {
         static void Main(string[] args)
         {
-            
+
             CustomerBuilder customerBuilder = new CustomerBuilder();
             Customer customer = customerBuilder.WithNameFromConsole().WithEmailFromConsole().WithTypeFromConsole().Build();
 
-            var order = new Order(customer);
+            Order order = new Order(customer);
 
-            var products = new List<Product>
+            List<Product> products = new List<Product>
             {
-                new Product("Mouse", 25.99),
-                new Product("Keyboard", 45.50),
-                new Product("Monitor", 150.00),
+                new BaseProduct("Mouse", 25.99),
+                new BaseProduct("Keyboard", 45.50),
+                new BaseProduct("Monitor", 150.00),
             };
 
             ProductSelector selector = new ProductSelector(products);
@@ -32,12 +33,13 @@ namespace GuroDemo
             while (continua)
             {
                 selector.ShowAvailableProducts();
-                Product p = selector.GetProduct();
-                int q = selector.GetProductQuantity(p);
-                order.AddItem(p, q);
+                Product product = selector.GetProduct();
+                int quantity = selector.GetProductQuantity(product);
+                product =selector.AddDecorator(product);
+                order.AddItem(product, quantity);
 
-                double total = order.Items.Sum(item => item.Product.Price * item.Quantity);
-                var strategy = PriceCalculator.GetStrategy(customer.TypeCustomer);
+                double total = order.Items.Sum(item => item.Product.GetPrice() * item.Quantity);
+                IPriceStrategy strategy = PriceCalculator.GetStrategy(customer.TypeCustomer);
                 double finalTotal = strategy.Calculate(total);
 
                 sender.Send(order);

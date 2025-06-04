@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GuroDemo.Decoration;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace GuroDemo
             Console.WriteLine($"         Data: {_order.CreatedAt:dd/MM/yyyy HH:mm}");
             foreach (var item in _order.Items)
             {
-                string line = $"         - {item.Product.Name} x{item.Quantity} = {item.GetSubtotal().ToString("C2", CultureInfo.CurrentCulture)}";
+                string line = $"         - {item.Product.GetName()} x{item.Quantity} = {item.GetSubtotal().ToString("C2", CultureInfo.CurrentCulture)}";
                 Console.WriteLine(line);
             }
         }

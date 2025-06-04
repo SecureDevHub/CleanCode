@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GuroDemo.Decoration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,7 +22,7 @@ namespace GuroDemo
             Console.WriteLine("Available products:");
             foreach (var item in products)
             {
-                Console.WriteLine($"- {item.Name} ({item.Price} EUR)");
+                Console.WriteLine($"- {item.GetName()} ({item.GetPrice()} EUR)");
             }
         }
 
@@ -40,7 +41,7 @@ namespace GuroDemo
 
                 // LINQ: simplified search
                 var product = products.FirstOrDefault(p =>
-                    p.Name.Equals(input, StringComparison.OrdinalIgnoreCase));
+                    p.GetName().Equals(input, StringComparison.OrdinalIgnoreCase));
 
                 if (product != null)
                     return product;
@@ -59,7 +60,7 @@ namespace GuroDemo
         public int GetProductQuantity(Product product)
         {
             int quantity;
-            Console.WriteLine($"Enter quantity for {product.Name}:");
+            Console.WriteLine($"Enter quantity for {product.GetName()}:");
 
             while (!int.TryParse(Console.ReadLine(), out quantity) || quantity <= 0)
             {
@@ -67,6 +68,26 @@ namespace GuroDemo
             }
 
             return quantity;
+        }
+
+        public Product AddDecorator(Product p)
+        {
+            Console.WriteLine("Vuoi aggiungere l'assicurazione? (s/n)");
+            if (Console.ReadLine().ToLower() == "s")
+                p = new InsuranceDecorator(p);
+
+            Console.WriteLine("Vuoi aggiungere l'imballaggio? (s/n)");
+            if (Console.ReadLine().ToLower() == "s")
+                p = new PackagingDecorator(p);
+
+            Console.WriteLine("Vuoi aggiungere l'estensione garanzia? (s/n)");
+            if (Console.ReadLine().ToLower() == "s")
+                p = new ExtensionDecorator(p);
+
+            Console.WriteLine($"Hai selezionato: {p.GetName()}");
+            Console.WriteLine($"Prezzo totale: {p.GetPrice():F2} EUR");
+
+            return p;
         }
     }
 }

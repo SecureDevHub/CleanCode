@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\BaseProduct.cs" />
+    <Compile Include="Decorator\ExtensionDecorator.cs" />
+    <Compile Include="Decorator\InsuranceDecorator.cs" />
+    <Compile Include="Decorator\PackagingDecorator.cs" />
+    <Compile Include="Decorator\ProductDecorator.cs" />
     <Compile Include="Factory\CompanyCustomerFactory.cs" />
     <Compile Include="Strategy\CompanyPriceStrategy.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -58,7 +63,7 @@
     <Compile Include="Services\PriceCalculator.cs" />
     <Compile Include="Factory\PrivateCustomerFactory.cs" />
     <Compile Include="Strategy\PrivatoPriceStrategy .cs" />
-    <Compile Include="Models\Product.cs" />
+    <Compile Include="Interfaces\Product.cs" />
     <Compile Include="Services\ProductSelector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
