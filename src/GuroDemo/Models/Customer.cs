@@ -10,9 +10,9 @@ namespace GuroDemo
     {
         public string Name;
         public string Email;
-        public TypeCustomerEnum TypeCustomer;
+        public CustomerTypeEnum TypeCustomer;
 
-        public Customer(string name, string email, TypeCustomerEnum typeCustomer)
+        public Customer(string name, string email, CustomerTypeEnum typeCustomer)
         {
             Name = name;
             Email = email;

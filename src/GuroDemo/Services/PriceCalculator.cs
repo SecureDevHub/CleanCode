@@ -8,16 +8,16 @@ namespace GuroDemo
 {
     internal class PriceCalculator
     {
-        public static IPriceStrategy GetStrategy(TypeCustomerEnum type)
+        public static IPriceStrategy GetStrategy(CustomerTypeEnum type)
         {
             switch (type)
             {
-                case TypeCustomerEnum.Vip:
+                case CustomerTypeEnum.Vip:
                     return new VipPriceStrategy();
-                case TypeCustomerEnum.Azienda:
-                    return new AziendaPriceStrategy();
+                case CustomerTypeEnum.Azienda:
+                    return new CompanyPriceStrategy();
                 default:
-                    return new PrivatoPriceStrategy();
+                    return new PrivatePriceStrategy();
             }
         }
     }

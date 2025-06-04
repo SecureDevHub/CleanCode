@@ -6,7 +6,7 @@ namespace GuroDemo
         {
             private string _name;
             private string _email;
-            private TypeCustomerEnum _typeCustomer;
+            private CustomerTypeEnum _typeCustomer;
 
             // Fluent setters
             public CustomerBuilder WithName(string name)
@@ -21,7 +21,7 @@ namespace GuroDemo
                 return this;
             }
 
-            public CustomerBuilder WithType(TypeCustomerEnum type)
+            public CustomerBuilder WithType(CustomerTypeEnum type)
             {
                 _typeCustomer = type;
                 return this;
@@ -50,13 +50,13 @@ namespace GuroDemo
                 switch (type.ToLower())
                 {
                     case "vip":
-                        _typeCustomer = TypeCustomerEnum.Vip;
+                        _typeCustomer = CustomerTypeEnum.Vip;
                         break;
                     case "azienda":
-                        _typeCustomer = TypeCustomerEnum.Azienda;
+                        _typeCustomer = CustomerTypeEnum.Azienda;
                         break;
                     default:
-                        _typeCustomer = TypeCustomerEnum.Privato;
+                        _typeCustomer = CustomerTypeEnum.Privato;
                         break;
                 }
 
