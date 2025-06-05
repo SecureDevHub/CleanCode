@@ -39,7 +39,7 @@ namespace GuroDemo
         {
             Console.WriteLine("Vuoi comprare altro?");
             string risposta = Console.ReadLine();
-            return (risposta == "si" || risposta == "Si" || risposta == "yes" || risposta == "Yes") ? true : false;
+            return (risposta == "si" || risposta == "Si" || risposta == "yes" || risposta == "Yes");
         }
 
     }

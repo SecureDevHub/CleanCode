@@ -28,5 +28,12 @@ namespace GuroDemo
                 Console.WriteLine(line);
             }
         }
+
+        public bool RemoveItem()
+        {
+            Console.WriteLine("vuoi rimuovere un prodotto dalla lista?");
+            string response = Console.ReadLine();
+            return (response == "s" || response == "si");
+        }
     }
 }
