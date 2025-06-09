@@ -4,7 +4,6 @@ using System.Linq;
 
 namespace GuroDemo
 {
-    // Represents an order containing customer information and a list of order items
     internal class Order
     {
         public Customer Customer { get; }
@@ -24,11 +23,30 @@ namespace GuroDemo
             _items.Add(new OrderItem(product, quantity));
         }
 
-        // Refactoring applied: Replace Temp with Query by encapsulating total calculation in a method
         public double GetTotal()
         {
             double total = _items.Sum(item => item.GetSubtotal());
             return total;
+        }
+
+        public List<OrderItem> RemoveProduct(OrderItem orderItem)
+        {
+            if (IsPresent(orderItem) && orderItem.Quantity <=1)
+            {
+                _items.Remove(orderItem);
+            }
+            else { orderItem.Quantity -= 1; }
+            return _items;
+        } 
+
+        private bool IsPresent(OrderItem orderItem)
+        {
+            foreach (OrderItem item in _items)
+            {
+                if(item.Product.GetName().Equals(orderItem.Product.GetName()))
+                    return true;
+            }
+            return false;
         }
     }
 }

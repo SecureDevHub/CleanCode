@@ -13,7 +13,7 @@ namespace GuroDemo
             Customer customer = new CustomerBuilder()
                 .WithName(name)
                 .WithEmail(email)
-                .WithType(CustomerTypeEnum.Privato)
+                .WithType(CustomerTypeEnum.Private)
                 .Build();
             return customer;
         }

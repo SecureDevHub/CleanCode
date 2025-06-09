@@ -10,7 +10,7 @@ namespace GuroDemo.Decoration
     {
         public PackagingDecorator(Product product) : base(product) { }
 
-        public override string GetName() => _product.GetName() + " + Imballaggio";
+        public override string GetName() => _product.GetName() + " + Packaging";
         public override double GetPrice() => _product.GetPrice() + 2.49;
     }
 }

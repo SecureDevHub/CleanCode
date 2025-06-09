@@ -43,33 +43,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InterfacesAbstract\ICommand.cs" />
+    <Compile Include="Command\AddItemCommand.cs" />
     <Compile Include="Models\BaseProduct.cs" />
     <Compile Include="Decorator\ExtensionDecorator.cs" />
     <Compile Include="Decorator\InsuranceDecorator.cs" />
     <Compile Include="Decorator\PackagingDecorator.cs" />
     <Compile Include="Decorator\ProductDecorator.cs" />
     <Compile Include="Factory\CompanyCustomerFactory.cs" />
+    <Compile Include="Services\CommandManager.cs" />
+    <Compile Include="Services\OrderManager.cs" />
+    <Compile Include="Services\ProductDecoratorService.cs" />
     <Compile Include="Strategy\CompanyPriceStrategy.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Builders\CustomerBuilder.cs" />
     <Compile Include="Common\EmailNotifier.cs" />
-    <Compile Include="Interfaces\ICustomerFactory.cs" />
-    <Compile Include="Interfaces\IOrderObserver.cs" />
-    <Compile Include="Interfaces\IPriceStrategy.cs" />
+    <Compile Include="InterfacesAbstract\ICustomerFactory.cs" />
+    <Compile Include="InterfacesAbstract\IOrderObserver.cs" />
+    <Compile Include="InterfacesAbstract\IPriceStrategy.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Services\OrderPrinter.cs" />
     <Compile Include="Services\OrderSender.cs" />
     <Compile Include="Services\PriceCalculator.cs" />
     <Compile Include="Factory\PrivateCustomerFactory.cs" />
-    <Compile Include="Strategy\PrivatoPriceStrategy .cs" />
-    <Compile Include="Interfaces\Product.cs" />
+    <Compile Include="Strategy\PrivatoPriceStrategy.cs" />
+    <Compile Include="InterfacesAbstract\Product.cs" />
     <Compile Include="Services\ProductSelector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\CustomerTypeEnum.cs" />
     <Compile Include="Factory\VipCustomerFactory.cs" />
-    <Compile Include="Strategy\VipPriceStrategy .cs" />
+    <Compile Include="Strategy\VipPriceStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -19,9 +19,9 @@ namespace GuroDemo
 
         public void Update(Order order)
         {
-            Console.WriteLine("Dettagli ordine:");
-            Console.WriteLine($"         Cliente: {_order.Customer.Name} ({_order.Customer.Email})");
-            Console.WriteLine($"         Data: {_order.CreatedAt:dd/MM/yyyy HH:mm}");
+            Console.WriteLine("Order details:");
+            Console.WriteLine($"         Customer: {_order.Customer.Name} ({_order.Customer.Email})");
+            Console.WriteLine($"         Date: {_order.CreatedAt:dd/MM/yyyy HH:mm}");
             foreach (var item in _order.Items)
             {
                 string line = $"         - {item.Product.GetName()} x{item.Quantity} = {item.GetSubtotal().ToString("C2", CultureInfo.CurrentCulture)}";
@@ -31,9 +31,9 @@ namespace GuroDemo
 
         public bool RemoveItem()
         {
-            Console.WriteLine("vuoi rimuovere un prodotto dalla lista?");
+            Console.WriteLine("Do you want remove product of cart?");
             string response = Console.ReadLine();
-            return (response == "s" || response == "si");
+            return (response == "y" || response == "yes");
         }
     }
 }

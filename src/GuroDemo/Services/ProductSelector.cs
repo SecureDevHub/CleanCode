@@ -14,9 +14,6 @@ namespace GuroDemo
             products = _products;
         }
 
-        // BEFORE:
-        // foreach (var item in products) { Console.WriteLine(item.Name); }
-        // AFTER: shows full product info (name + price)
         public void ShowAvailableProducts()
         {
             Console.WriteLine("Available products:");
@@ -26,10 +23,6 @@ namespace GuroDemo
             }
         }
 
-        // BEFORE:
-        // returned null and used foreach to search
-        // AFTER:
-        // safer approach using LINQ, explicit control flow, exception on failure
         public Product GetProduct(int maxAttempts = 3)
         {
             int attempts = 0;
@@ -39,7 +32,6 @@ namespace GuroDemo
                 Console.WriteLine("Enter product name:");
                 string input = Console.ReadLine();
 
-                // LINQ: simplified search
                 var product = products.FirstOrDefault(p =>
                     p.GetName().Equals(input, StringComparison.OrdinalIgnoreCase));
 
@@ -53,10 +45,6 @@ namespace GuroDemo
             throw new InvalidOperationException("Too many failed attempts. Product not found.");
         }
 
-        // BEFORE:
-        // int.Parse without validation
-        // AFTER:
-        // uses int.TryParse to avoid crashes on invalid input
         public int GetProductQuantity(Product product)
         {
             int quantity;

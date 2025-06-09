@@ -10,7 +10,7 @@ namespace GuroDemo.Decoration
     {
         public InsuranceDecorator(Product product) : base(product) { }
 
-        public override string GetName() => _product.GetName() + " + Assicurazione";
+        public override string GetName() => _product.GetName() + " + Insurance";
         public override double GetPrice() => _product.GetPrice() + 5.99;
     }
 }

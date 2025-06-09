@@ -27,7 +27,6 @@ namespace GuroDemo
                 return this;
             }
 
-            // Fluent setters from console (optional step)
             public CustomerBuilder WithNameFromConsole()
             {
                 Console.Write("Inserisci nome cliente: ");
@@ -44,7 +43,7 @@ namespace GuroDemo
 
             public CustomerBuilder WithTypeFromConsole()
             {
-                Console.Write("Tipo cliente (Privato, Azienda, VIP): ");
+                Console.Write("Tipo cliente (Private, Company, VIP): ");
                 string type = Console.ReadLine();
 
                 switch (type.ToLower())
@@ -53,10 +52,10 @@ namespace GuroDemo
                         _typeCustomer = CustomerTypeEnum.Vip;
                         break;
                     case "azienda":
-                        _typeCustomer = CustomerTypeEnum.Azienda;
+                        _typeCustomer = CustomerTypeEnum.Company;
                         break;
                     default:
-                        _typeCustomer = CustomerTypeEnum.Privato;
+                        _typeCustomer = CustomerTypeEnum.Private;
                         break;
                 }
 
@@ -70,8 +69,10 @@ namespace GuroDemo
                     throw new InvalidOperationException("Name is required.");
                 if (string.IsNullOrWhiteSpace(_email))
                     throw new InvalidOperationException("Email is required.");
+                if (string.IsNullOrWhiteSpace(_typeCustomer.ToString()))
+                    throw new InvalidOperationException("Type is required.");
 
-                return new Customer(_name, _email, _typeCustomer);
+            return new Customer(_name, _email, _typeCustomer);
             }
         }
 }

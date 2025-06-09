@@ -7,18 +7,13 @@ using System.Threading.Tasks;
 namespace GuroDemo
 {
 
-    // Responsible for sending the order
-    // Refactoring applied: Extract Class (OrderSender) to separate sending logic from order management
     internal class OrderSender
     {
-        // 1. Istanza creata automaticamente e in modo thread-safe
         private static readonly OrderSender singleton = new OrderSender();
         private readonly List<IOrderObserver> observers = new List<IOrderObserver>();
 
-        // 2. Costruttore privato per impedire istanze esterne
         private OrderSender() { }
 
-        // 3. Metodo pubblico di accesso all’istanza
         public static OrderSender GetInstance() => singleton;
 
         public void RegisterObserver(IOrderObserver observer)
@@ -35,11 +30,11 @@ namespace GuroDemo
             }
         }
 
-        public bool continueShopping()
+        public bool ContinueShopping()
         {
-            Console.WriteLine("Vuoi comprare altro?");
+            Console.WriteLine("Do you want to buy another product?");
             string risposta = Console.ReadLine();
-            return (risposta == "si" || risposta == "Si" || risposta == "yes" || risposta == "Yes");
+            return (risposta == "yes" || risposta == "Yes");
         }
 
     }

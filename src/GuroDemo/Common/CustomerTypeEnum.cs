@@ -8,8 +8,8 @@ namespace GuroDemo
 {
     internal enum CustomerTypeEnum
     {
-        Privato,
+        Private,
         Vip,
-        Azienda
+        Company
     }
 }

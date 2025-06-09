@@ -14,7 +14,7 @@ namespace GuroDemo
             {
                 case CustomerTypeEnum.Vip:
                     return new VipPriceStrategy();
-                case CustomerTypeEnum.Azienda:
+                case CustomerTypeEnum.Company:
                     return new CompanyPriceStrategy();
                 default:
                     return new PrivatePriceStrategy();
