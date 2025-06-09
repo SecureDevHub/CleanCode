@@ -51,7 +51,6 @@
     <Compile Include="Decorator\PackagingDecorator.cs" />
     <Compile Include="Decorator\ProductDecorator.cs" />
     <Compile Include="Factory\CompanyCustomerFactory.cs" />
-    <Compile Include="Services\CommandManager.cs" />
     <Compile Include="Services\OrderManager.cs" />
     <Compile Include="Services\ProductDecoratorService.cs" />
     <Compile Include="Strategy\CompanyPriceStrategy.cs" />

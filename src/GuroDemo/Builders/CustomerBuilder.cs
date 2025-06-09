@@ -29,21 +29,21 @@ namespace GuroDemo
 
             public CustomerBuilder WithNameFromConsole()
             {
-                Console.Write("Inserisci nome cliente: ");
+                Console.Write("Enter customer name: ");
                 _name = Console.ReadLine();
                 return this;
             }
 
             public CustomerBuilder WithEmailFromConsole()
             {
-                Console.Write("Inserisci email: ");
+                Console.Write("Enter customer email: ");
                 _email = Console.ReadLine();
                 return this;
             }
 
             public CustomerBuilder WithTypeFromConsole()
             {
-                Console.Write("Tipo cliente (Private, Company, VIP): ");
+                Console.Write("Type of customer? (Private, Company, VIP): ");
                 string type = Console.ReadLine();
 
                 switch (type.ToLower())
@@ -51,7 +51,7 @@ namespace GuroDemo
                     case "vip":
                         _typeCustomer = CustomerTypeEnum.Vip;
                         break;
-                    case "azienda":
+                    case "Company":
                         _typeCustomer = CustomerTypeEnum.Company;
                         break;
                     default:
