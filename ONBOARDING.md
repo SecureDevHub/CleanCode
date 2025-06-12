@@ -17,11 +17,18 @@ Welcome to the project! We're excited to have you on board. This guide will help
 
 ## Project Overview
 
-Provide a brief description of the project here. Include:
-- The purpose of the project.
-- Key technologies used.
-- Any high-level goals or vision.
+CleanCode is a learning-focused repository built to explore and apply object-oriented design principles using C# and the .NET platform. It simulates different type of simplified real-world applications, where design patterns are applied to different software scenarios.
 
+🔍 Purpose
+- To provide a hands-on environment for understanding how design patterns work.
+- To promote clean code practices and SOLID principles.
+
+🛠️ Key Technologies
+- C# / .NET 6+ – Core programming environment
+
+🎯 Vision & Goals
+- Demonstrate clean implementations of key design patterns.
+- Maintain clarity and accessibility for learners at all levels.
 ---
 
 ## Setting Up Your Environment
@@ -34,41 +41,17 @@ Follow these steps to set up your development environment:
    cd your-repo
    ```
 
-2. **Install Dependencies**  
-   Make sure you have the required tools installed (e.g., Node.js, Python, Docker). Then, install project dependencies:
-   ```bash
-   npm install
-   # or for Python
-   pip install -r requirements.txt
-   ```
+2. **Install Visual Studio IDE**  
+   Make sure you have Visual Studio IDE installed.
 
-3. **Environment Variables**  
-   Copy the `.env.example` file to `.env` and update the values as needed:
-   ```bash
-   cp .env.example .env
-   ```
-
-4. **Run the Application**  
-   Start the application locally:
-   ```bash
-   npm start
-   # or for Python
-   python app.py
-   ```
-
-5. **Run Tests**  
-   Ensure everything is working by running the test suite:
-   ```bash
-   npm test
-   # or for Python
-   pytest
-   ```
+3. **Run the Application**  
+   Start the application locally with Visual Studio. Dependencies are automatically installed at first startup.
 
 ---
 
 ## Branching and Workflow
 
-We follow the **Gitflow Workflow**. Follow the guidelines: [GIT_FLOW.md](https://github.com/SecureDevHub/TemplateProject/blob/main/GIT_FLOW.md)
+We follow the **Gitflow Workflow**. Follow the guidelines: GIT_FLOW.md
 
 ---
 
@@ -96,12 +79,7 @@ We follow the **Gitflow Workflow**. Follow the guidelines: [GIT_FLOW.md](https:/
 To maintain consistency, follow these guidelines:
 
 - **Code Style**: Use [Prettier](https://prettier.io/) or [Black](https://black.readthedocs.io/) for formatting.
-- **Linting**: Run the linter before committing:
-  ```bash
-  npm run lint
-  # or for Python
-  flake8
-  ```
+- **Linting**: Run the linter before committing, or simply use SonarLint IDE extension to receive warnings during development.
 - **Documentation**: Update documentation for any new features or changes.
 
 ---
@@ -131,7 +109,7 @@ All contributions must include tests. Here's how to write and run tests:
 If you have any questions or run into issues, feel free to reach out:
 
 - **GitHub Issues**: Open an issue with the `question` label.
-- **Documentation**: Check the [Wiki](https://github.com/your-organization/your-repo/wiki) for more details.
+- **Documentation**: Check the Wiki for more details.
 
 ---
 
