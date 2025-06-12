@@ -26,7 +26,7 @@ This document outlines the coding standards and style guidelines to ensure consi
 - Follow the DRY (Don't Repeat Yourself) principle.
 - Ensure code is modular and reusable.
 - Always write code with security in mind.
-- <!-- Link style guide microsoft -->
+- https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/
 
 ---
 
@@ -58,9 +58,8 @@ This document outlines the coding standards and style guidelines to ensure consi
 - Use spaces instead of tabs (2 or 4 spaces, depending on the project).
 - Limit line length to 80-100 characters.
 - Add a newline at the end of each file.
-- Use consistent indentation:
-  - **JavaScript/TypeScript**: 2 spaces.
-  - **Python**: 4 spaces.
+- Use automatic indentation:
+  - Visual Studio ShortCut: crtl + k + D.
 - Use single quotes (`'`) or double quotes (`"`) consistently for strings, based on the project standard.
 
 ---
@@ -97,11 +96,14 @@ This document outlines the coding standards and style guidelines to ensure consi
 - Maintain a minimum test coverage threshold (e.g., 80%).
 - Organize tests in a `tests/` or `__tests__/` folder.
 - Example (Jest):
-  ```javascript
-  test('should return user data for valid ID', () => {
-    const result = getUserData('123');
-    expect(result).toEqual({ id: '123', name: 'John Doe' });
-  });
+  ```C#
+  [Test]
+  public void shouldReturnUserDataWhenValidIdIsProvided()
+  {
+      // Arrange
+      // Act
+      // Assert
+  }
   ```
 
 ---
