@@ -26,6 +26,7 @@ This document outlines the coding standards and style guidelines to ensure consi
 - Follow the DRY (Don't Repeat Yourself) principle.
 - Ensure code is modular and reusable.
 - Always write code with security in mind.
+- <!-- Link style guide microsoft -->
 
 ---
 

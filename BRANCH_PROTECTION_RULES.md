@@ -18,12 +18,3 @@ To maintain code quality and ensure a stable codebase, the following branch prot
 
 3. **Restrict Direct Pushes**
     - Only maintainers can push directly to `main` in exceptional cases.
-
-## Develop Branch (`develop`)
-
-1. **Require Pull Request Reviews**
-
-    - At least 1 reviewer must approve the pull request before merging.
-
-2. **Require Status Checks**
-    - All CI/CD checks must pass before merging.

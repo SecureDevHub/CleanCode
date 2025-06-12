@@ -1,5 +1,5 @@
 # ARCHITECTURE.md
-
+<!-- tool per creare i grafici mermaid -->
 ## Overview
 
 This document provides an overview of the architecture of the project. It describes the main components, their responsibilities, and how they interact with each other. The goal is to give developers and stakeholders a clear understanding of the system's structure and design principles.

@@ -30,13 +30,7 @@ Example: `v1.2.3`
 3. **Finalize the Release**
    - Update the version number in the codebase (e.g., `package.json`, `pyproject.toml`, etc.).
    - Update the `CHANGELOG.md` with the new release details.
-   - Merge the release branch into `main` and `develop`:
-     ```bash
-     git checkout main
-     git merge release/<version>
-     git checkout develop
-     git merge release/<version>
-     ```
+   - Open pull request to main 
 
 4. **Tag the Release**
    - Create a version tag:
@@ -44,9 +38,6 @@ Example: `v1.2.3`
      git tag -a v<version> -m "Release version <version>"
      git push origin v<version>
      ```
-
-5. **Publish the Release**
-   - Create a new release on GitHub and attach the release notes.
 
 ## Hotfix Workflow
 - For critical fixes, create a hotfix branch from `main`:

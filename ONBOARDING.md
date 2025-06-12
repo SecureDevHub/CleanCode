@@ -1,5 +1,5 @@
 # ONBOARDING GUIDE
-
+<!-- da modificare per c# e vs e approfondire gli unit test -->
 Welcome to the project! We're excited to have you on board. This guide will help you set up your environment, understand our contribution process, and get started with your first contribution.
 
 ---
