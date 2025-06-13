@@ -1,39 +1,33 @@
-# Changelog
+# CHANGELOG.md
 
 All notable changes to this project will be documented in this file.
+This project adheres to [Semantic Versioning](https://semver.org/).
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/).
+---
 
-## [Unreleased]
+## \[1.0.0] - 2025-06-12
+
 ### Added
-- [Example] New feature or functionality added.
-- [Example] Improved documentation for section X.
+
+* Initial release of **GuroDemo**, a console application in C# to explore and apply major design patterns.
+* Implemented core architecture including:
+
+  * OrderManager orchestration class
+  * ProductSelector for interactive input
+  * Customer and Product builders (Builder Pattern)
+  * Strategy Pattern for customer-type-based price calculation
+  * Singleton + Observer for OrderSender notifications
+  * Decorator Pattern for adding optional product features (e.g., warranty, insurance)
+  * Command Pattern for encapsulating order item addition
 
 ### Changed
-- [Example] Performance optimization for module Y.
-- [Example] Updated library Z to version 2.0.
 
-### Fixed
-- [Example] Fixed a bug causing the application to crash under certain conditions.
-- [Example] Corrected a translation error in the English language.
+* N/A
 
----
+### Removed
 
-## [1.0.0] - 2025-04-07
-### Added
-- First stable release of the project.
-- Implemented core features: X, Y, Z.
+* N/A
 
 ---
 
-## [0.1.0] - 2025-03-01
-### Added
-- Initial version of the project.
-- Basic structure and initial setup.
-
----
-
-### Notes
-- **[Added]**: For new features or additions.
-- **[Changed]**: For changes to existing functionality.
-- **[Fixed]**: For bug fixes or corrections.
+> Next versions will include: automated tests, database persistence, GUI layers, and more advanced pattern usage.

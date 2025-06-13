@@ -1,8 +1,8 @@
 # ARCHITECTURE.md
-<!-- tool per creare i grafici mermaid -->
+
 ## Overview
 
-This document provides an overview of the architecture of the project. It describes the main components, their responsibilities, and how they interact with each other. The goal is to give developers and stakeholders a clear understanding of the system's structure and design principles.
+This document describes the architecture of the project, outlining the main components, their responsibilities, and the interactions between them. The goal is to provide a clear understanding of the system structure for both developers and stakeholders.
 
 ---
 
@@ -10,111 +10,125 @@ This document provides an overview of the architecture of the project. It descri
 
 1. [Introduction](#introduction)
 2. [High-Level Architecture](#high-level-architecture)
-3. [Core Components](#core-components)
+3. [Main Components](#main-components)
 4. [Data Flow](#data-flow)
-5. [Technology Stack](#technology-stack)
+5. [Technologies Used](#technologies-used)
 6. [Deployment Architecture](#deployment-architecture)
-7. [Future Improvements](#future-improvements)
+7. [Future Improvements](#future-improvements)S
+8. [Diagrams](#diagrams)
+9. [Conclusion](#conclusion)
 
 ---
 
 ## Introduction
 
-Provide a brief introduction to the project, its purpose, and the problem it aims to solve. Include any relevant context or background information.
+**Project Name**: GuroDemo
+**Purpose**: A demonstrative platform for learning and applying Design Patterns in C#
+**Core Features**:
 
-### Example:
-- **Project Name**: [Your Project Name]
-- **Purpose**: [Brief description of the project's purpose]
-- **Key Features**: [List of key features or functionalities]
+* Order management
+* Product selection
+* Dynamic discount and decoration application
+* Modular architecture with support for classic design patterns
 
 ---
 
 ## High-Level Architecture
 
-Describe the overall architecture of the system. Include a diagram if possible to visually represent the main components and their interactions.
+**Architecture Style**: Modular Monolith
+**Main Layers**:
 
-### Example:
-- **Architecture Style**: [e.g., Microservices, Monolithic, Event-Driven, etc.]
-- **Key Layers**: [e.g., Presentation Layer, Business Logic Layer, Data Layer, etc.]
-- **Communication**: [e.g., REST APIs, Message Queues, etc.]
+* **Presentation**: Console UI (user interaction)
+* **Business Logic**: Order processing, customer/product logic, pricing strategy
+* **Persistence**: Simulated in-memory (product and order lists)
+
+**Communication**: Direct class interactions via references (no distributed messaging).
 
 ---
 
-## Core Components
+## Main Components
 
-List and describe the main components or modules of the system. For each component, include its purpose and responsibilities.
+1. **Program.cs**
+   Entry point of the application. Initializes and coordinates core services.
 
-### Example:
-1. **Frontend**:
-   - **Description**: Handles the user interface and user interactions.
-   - **Technologies**: [e.g., React, Angular, etc.]
+2. **OrderManager**
+   Orchestrates the full ordering process, including interaction with `ProductSelector`, `OrderSender`, and pricing strategies.
 
-2. **Backend**:
-   - **Description**: Manages business logic and data processing.
-   - **Technologies**: [e.g., Node.js, Python, etc.]
+3. **ProductSelector**
+   Handles user interaction for product selection and configuration.
 
-3. **Database**:
-   - **Description**: Stores and manages data.
-   - **Technologies**: [e.g., PostgreSQL, MongoDB, etc.]
+4. **OrderSender (Singleton + Observer)**
+   Manages order dispatch and notifies registered observers (e.g., printing, email).
 
-4. **Authentication Service**:
-   - **Description**: Manages user authentication and authorization.
-   - **Technologies**: [e.g., OAuth, JWT, etc.]
+5. **CustomerBuilder / ProductBuilder (Builder Pattern)**
+   Incremental and validated object creation.
+
+6. **PriceCalculator (Strategy Pattern)**
+   Applies pricing strategies based on customer type.
+
+7. **Product Decorators**
+   Dynamically enhance products with extra features (warranty, packaging, insurance).
+
+8. **Command Pattern**
+   Encapsulates operations like adding items to an order into executable commands.
 
 ---
 
 ## Data Flow
 
-Explain how data flows through the system. Include details about how data is created, processed, and stored. A diagram can be helpful here.
-
-### Example:
-- **User Interaction**: [Describe how users interact with the system]
-- **Data Processing**: [Describe how data is processed by the backend]
-- **Storage**: [Describe how and where data is stored]
+1. The user selects a product and specifies quantity.
+2. Product is decorated dynamically based on user input.
+3. An `OrderItem` is created and added to the `Order` via a command.
+4. The `PriceCalculator` applies the relevant pricing strategy.
+5. `OrderSender` notifies its observers (e.g., `OrderPrinter`, `EmailNotifier`).
 
 ---
 
-## Technology Stack
+## Technologies Used
 
-Provide a list of the technologies, frameworks, and tools used in the project.
-
-### Example:
-- **Frontend**: [e.g., React, Tailwind CSS]
-- **Backend**: [e.g., Node.js, Express]
-- **Database**: [e.g., PostgreSQL, Redis]
-- **DevOps**: [e.g., Docker, Kubernetes, CI/CD tools]
-- **Other Tools**: [e.g., Elasticsearch, RabbitMQ]
+* **Language**: C#
+* **Runtime**: .NET 6+
+* **Patterns**: Builder, Strategy, Singleton, Observer, Decorator, Command, Factory Method
+* **Tools**: Visual Studio / VS Code
 
 ---
 
 ## Deployment Architecture
 
-Describe how the system is deployed and hosted. Include details about the infrastructure, environments, and any cloud services used.
-
-### Example:
-- **Hosting**: [e.g., AWS, Azure, Google Cloud]
-- **Environments**: [e.g., Development, Staging, Production]
-- **CI/CD Pipeline**: [e.g., GitHub Actions, Jenkins]
+* **App Type**: Console
+* **Hosting**: Local (development/test only)
+* **Environments**: No production deployment; can be extended for it
 
 ---
 
 ## Future Improvements
 
-List potential improvements or planned changes to the architecture. This section helps to document the project's roadmap and technical debt.
-
-### Example:
-- **Scalability**: [Plans to improve scalability]
-- **Performance**: [Plans to optimize performance]
-- **New Features**: [Planned features or modules]
+* Add persistence with a database or file storage
+* Extend to GUI (e.g., WPF or web-based frontend)
+* Introduce automated testing (unit, integration)
+* Structured logging (e.g., Serilog or NLog)
+* Potential refactor into microservices (as an advanced exercise)
 
 ---
 
 ## Diagrams
 
-Include any relevant diagrams (e.g., system architecture, data flow, deployment) to provide a visual representation of the architecture.
+```mermaid
+graph TD
+    A[Program.cs] --> B[OrderManager]
+    B --> C[ProductSelector]
+    B --> D[OrderSender]
+    B --> E[PriceCalculator]
+    C --> F[BaseProduct]
+    F --> G[Decorators]
+    D --> H[OrderPrinter]
+    D --> I[EmailNotifier]
+    B --> J[Command: AddItemCommand]
+    J --> K[Order]
+```
 
 ---
 
 ## Conclusion
 
-Summarize the key points of the architecture and provide any additional resources or references for further reading.
+The architecture of the GuroDemo project was designed as a practical exercise in software design principles and pattern implementation. Each component follows the single responsibility principle and is structured to support extensibility and modularity.
