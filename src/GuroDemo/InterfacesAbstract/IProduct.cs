@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GuroDemo
+namespace GuroDemo.InterfacesAbstract
 {
     internal interface IProduct
     {

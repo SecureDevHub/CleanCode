@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GuroDemo.Decoration
 {
-    internal class ExtensionDecorator : ProductDecorator
+    public class ExtensionDecorator : ProductDecorator
     {
         public ExtensionDecorator(Product product) : base(product) { }
 
