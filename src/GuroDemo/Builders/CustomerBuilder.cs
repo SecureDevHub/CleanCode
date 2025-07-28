@@ -1,21 +1,32 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace GuroDemo
 {
-        internal class CustomerBuilder
+        internal partial class CustomerBuilder
         {
             private string _name;
             private string _email;
             private CustomerTypeEnum _typeCustomer;
+            [GeneratedRegex(@"^[a-zA-Z\s]+$")]
+            private static partial Regex EmailRegex();
 
-            // Fluent setters
-            public CustomerBuilder WithName(string name)
-            {
+        public CustomerBuilder WithName(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Il nome non può essere vuoto");
+
+            if (name.Length < 2)
+                throw new ArgumentException("Il nome deve contenere almeno 2 caratteri");
+
+            if (!EmailRegex().IsMatch(name))
+                throw new ArgumentException("Il nome contiene caratteri non validi");
                 _name = name;
                 return this;
-            }
+        }
 
-            public CustomerBuilder WithEmail(string email)
+
+        public CustomerBuilder WithEmail(string email)
             {
                 _email = email;
                 return this;
@@ -74,5 +85,6 @@ namespace GuroDemo
 
             return new Customer(_name, _email, _typeCustomer);
             }
-        }
+
+    }
 }

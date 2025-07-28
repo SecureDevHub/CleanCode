@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GuroDemo.Decoration
 {
-    public class BaseProduct : Product
+    internal class BaseProduct : Product
     {
         private readonly string _name;
         private readonly double _price;

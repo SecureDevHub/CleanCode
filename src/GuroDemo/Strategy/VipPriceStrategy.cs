@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GuroDemo
 {
-    public class VipPriceStrategy : IPriceStrategy
+    internal class VipPriceStrategy : IPriceStrategy
     {
         public double Calculate(double baseTotal)
         {

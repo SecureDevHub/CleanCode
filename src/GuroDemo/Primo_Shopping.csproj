@@ -16,6 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+  <InternalsVisibleTo Include="Primo_Shopping.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
 

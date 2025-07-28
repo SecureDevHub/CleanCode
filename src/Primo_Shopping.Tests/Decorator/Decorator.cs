@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Primo_Shopping.Tests.Decoration
 {
-    public class Decoration
+    public class Decorator
     {
         [Theory]
         [InlineData(true, false, false, "Mouse + Insurance", 25.99 + 5.99)] 

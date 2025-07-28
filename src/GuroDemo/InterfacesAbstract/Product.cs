@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GuroDemo
 {
-    public abstract class Product
+    internal abstract class Product
     {
         public abstract string GetName();
         public abstract double GetPrice();
