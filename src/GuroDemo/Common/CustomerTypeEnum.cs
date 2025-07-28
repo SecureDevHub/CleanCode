@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GuroDemo
 {
-    internal enum CustomerTypeEnum
+    public enum CustomerTypeEnum
     {
         Private,
         Vip,

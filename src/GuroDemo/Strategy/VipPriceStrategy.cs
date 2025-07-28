@@ -10,6 +10,10 @@ namespace GuroDemo
     {
         public double Calculate(double baseTotal)
         {
+            if (baseTotal < 0)
+            {
+                throw new ArgumentException();
+            }
             Console.WriteLine("20% di sconto VIP applicato.");
             Console.WriteLine("Spedizione gratuita.");
             return baseTotal * 0.8;

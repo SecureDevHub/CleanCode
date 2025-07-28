@@ -1,88 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1565E2B2-EC8D-4624-85BB-7A72D46D5736}</ProjectGuid>
     <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>GuroDemo</RootNamespace>
     <AssemblyName>GuroDemo</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
+    <Platforms>AnyCPU</Platforms>
+    <LangVersion>latest</LangVersion>
+    <Version>2.0.0</Version>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="InterfacesAbstract\ICommand.cs" />
-    <Compile Include="Command\AddItemCommand.cs" />
-    <Compile Include="Models\BaseProduct.cs" />
-    <Compile Include="Decorator\ExtensionDecorator.cs" />
-    <Compile Include="Decorator\InsuranceDecorator.cs" />
-    <Compile Include="Decorator\PackagingDecorator.cs" />
-    <Compile Include="Decorator\ProductDecorator.cs" />
-    <Compile Include="Factory\CompanyCustomerFactory.cs" />
-    <Compile Include="Services\OrderManager.cs" />
-    <Compile Include="Services\ProductDecoratorService.cs" />
-    <Compile Include="Strategy\CompanyPriceStrategy.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Builders\CustomerBuilder.cs" />
-    <Compile Include="Common\EmailNotifier.cs" />
-    <Compile Include="InterfacesAbstract\ICustomerFactory.cs" />
-    <Compile Include="InterfacesAbstract\IOrderObserver.cs" />
-    <Compile Include="InterfacesAbstract\IPriceStrategy.cs" />
-    <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\OrderItem.cs" />
-    <Compile Include="Services\OrderPrinter.cs" />
-    <Compile Include="Services\OrderSender.cs" />
-    <Compile Include="Services\PriceCalculator.cs" />
-    <Compile Include="Factory\PrivateCustomerFactory.cs" />
-    <Compile Include="Strategy\PrivatoPriceStrategy.cs" />
-    <Compile Include="InterfacesAbstract\Product.cs" />
-    <Compile Include="Services\ProductSelector.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Common\CustomerTypeEnum.cs" />
-    <Compile Include="Factory\VipCustomerFactory.cs" />
-    <Compile Include="Strategy\VipPriceStrategy.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup />
+
   <ItemGroup>
     <Content Include="CodeSmells\PrimoCodice.txt" />
     <Content Include="CodeSmells\SecondoCodice.txt" />
     <Content Include="CodeSmells\TerzoCodice.txt" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+  <ItemGroup>
+  <InternalsVisibleTo Include="Primo_Shopping.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+
 </Project>

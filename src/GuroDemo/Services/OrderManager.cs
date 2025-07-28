@@ -40,7 +40,7 @@ namespace GuroDemo.Services
 
         private void PrintTotal(Order order)
         {
-            double total = order.Items.Sum((Func<OrderItem, double>)(item => (item.Product.GetPrice() * item.Quantity)));
+            double total = order.Items.Sum((item => (item.Product.GetPrice() * item.Quantity)));
             IPriceStrategy strategy = PriceCalculator.GetStrategy(order.Customer.TypeCustomer);
             double finalTotal = strategy.Calculate(total);
 

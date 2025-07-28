@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GuroDemo.Decoration
 {
-    internal abstract class ProductDecorator : Product
+    public abstract class ProductDecorator : Product
     {
         protected readonly Product _product;
 
