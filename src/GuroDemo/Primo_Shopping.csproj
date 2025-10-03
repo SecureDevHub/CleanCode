@@ -18,7 +18,9 @@
 
   <ItemGroup>
   <InternalsVisibleTo Include="Primo_Shopping.Tests" />
-  </ItemGroup>
+  <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+</ItemGroup>
+
 
   <ItemGroup>
     <None Include="App.config" />

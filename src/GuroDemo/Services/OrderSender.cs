@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GuroDemo.InterfacesAbstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 namespace GuroDemo
 {
 
-    internal class OrderSender
+    internal class OrderSender : IOrderSender
     {
         private static readonly OrderSender singleton = new OrderSender();
         private readonly List<IOrderObserver> observers = new List<IOrderObserver>();
